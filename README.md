@@ -1,4 +1,4 @@
-# multi_lidar_registration_public_package
+# Multi LiDAR Registration
 <p align = "center">
 <img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/aligned_four_lidars.png" alt="aligned four lidars" width="450" height="470">
 </p> 
@@ -16,6 +16,7 @@ This project is a ROS2-Humble-based application for processing and registering L
 
 ## Installation
 ### Prerequisites
+- **Ubuntu 22.04**
 - **ROS2 Humble**
 - **PCL (Point Cloud Library)**
 - **Eigen Library**
@@ -78,13 +79,15 @@ point_cloud_registration_node:
 - **target_callback**: The corresponding callback function for the target LiDAR.
 - **opposite**: Set to true if the registered LiDAR needs to be mirrored horizontally.
 
-After modifying the configuration, run the following command to start the keypoint extraction process:
+#### Running the Registration Process
+
+After you have configured the `registration_config.yaml` file according to your LiDAR setup, you can start the keypoint extraction process by executing the following command:
 
 ```bash
 ros2 launch multi_lidar_registration registration.launch.py
 ```
 
-This will extract the keypoints and store them in the `install/share/multi_lidar_registration/keypoints/` directory.
+This will extract the keypoints and store them in the `install/share/multi_lidar_registration/keypoints/` directory as `source_keypoint.txt` and `target_keypoint.txt`.
 
 ### Step 2: Registration
 
