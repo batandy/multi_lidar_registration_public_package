@@ -4,24 +4,15 @@
 </p> 
 
 ## Descriptions
-This project is a ROS2-Humble-based application for processing and registering LiDAR point cloud data from multiple sensors. It includes functionalities for filtering, transforming, and synchronizing point clouds from various LiDAR models like "LIVOX MID360", "LIVOX AVIA" and "Velodyne 16". The processed point clouds are used to extract keypoints and align them for further analysis or usage in robotics applications.
+This project is a ROS2-Humble-based application for processing and registering LiDAR point cloud data from multiple sensors. It includes functionalities for filtering, transforming point clouds from various LiDAR models like "LIVOX MID360", "LIVOX AVIA" and "Velodyne 16". The processed point clouds are used to extract keypoints and align them for further analysis or usage in robotics applications.
 
 ## Table of Contents
-- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#configuration)
 - [Pre-requisites](#pre-requisites)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Features
-- **Multi-sensor Support**: Supports 16-channel spinning LiDARs and solid/dome-type LiDARs.
-- **Real-time Point Cloud Synchronization**: Synchronizes source and target point clouds for accurate registration.
-- **Keypoint Extraction**: Extracts keypoints from the point clouds for further processing.
-- **Field-of-View (FOV) Filtering**: Filters point clouds based on the specified field of view.
-- **Interactive FOV Adjustment**: Allows real-time adjustment of the filtering parameters via keyboard input.
-- **Visualization**: Publishes markers for visualization in RViz to represent the filtering regions.
+- [Configuration](#configuration)
+- [Registration](#Registration)
+- [Overlap Filtering](#Overlap-Filtering)
 
 ## Installation
 ### Prerequisites
@@ -41,6 +32,19 @@ This project is a ROS2-Humble-based application for processing and registering L
     source install/setup.bash
     ```
 
+### Pre-requisites
+
+<p align = "center">
+<img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/calibration_target.jpg" alt="aligned four lidars">
+</p> 
+
+For effective point cloud registration, a physical calibration target is required. The target should have the following specifications:
+
+- **Top Section**: A circular disk with a diameter of 30 cm.
+- **Bottom Section**: A frustum-shaped lava cone with a height of 84 cm, a top radius of 17 cm, and a bottom radius of 7 cm.
+- **Reflective Film**: The reflective film should be applied only to the circular top section and the frustum-shaped bottom section.
+
+
 ## Usage
 
 ### Supported LiDAR Types
@@ -58,7 +62,7 @@ Here’s an example configuration:
 point_cloud_registration_node:
   #mid360 -> mid_callback
   #avia -> avia_callback
-  #velodyne -> vlp_callback
+  #velodyne 16-channel -> vlp_callback
 
   ros__parameters:
     source_topic: "LITE_points"
@@ -106,14 +110,15 @@ To start the registration process, run:
 ros2 run multi_lidar_registration publisher
 ```
 
-The registered point clouds will be published to the following topics:
+The registered point clouds will be published to different topics depending on the value of the `publish_merged_topic` parameter:
 
-- If `publish_merged_topic=true`: `merged_transformed`, `merged_baseline`
-- If `publish_merged_topic=false`: `<source_topic>_transformed`, `<source_topic>_baseline`, `<target_topic>_baseline`
+- **If `publish_merged_topic` is set to `true`**: The registered point clouds from the source and target LiDARs will be combined and published to a single set of topics. The topics will be named `merged_transformed` for the transformed point cloud and `merged_baseline` for the baseline alignment.
+
+- **If `publish_merged_topic` is set to `false`**: The registered point clouds from the source and target LiDARs will be published separately. The source LiDAR’s transformed point cloud will be published to a topic named `<source_topic>_transformed`, and the baseline alignment for the source will be published to `<source_topic>_baseline`. Similarly, the target LiDAR’s baseline alignment will be published to `<target_topic>_baseline`. Here, `<source_topic>` and `<target_topic>` are placeholders that will be replaced by the actual topic names you configured for the source and target LiDARs.
 
 Where `<source_topic>` is the name of the LiDAR topic you configured earlier. The baseline topics represent the midpoint and horizontal alignment between the two LiDARs.
 
-### Overlap Filtering
+### Overlap-Filtering
 
 To filter the overlapping regions, run:
 
@@ -141,16 +146,3 @@ Markers representing the filtering regions will be published to:
 - `min_filtering_marker`
 - `max_filtering_marker`
 - `start_filtering_marker`
-
-### Configuration
-
-- **`registration_config.yaml`**: Contains parameters related to point cloud registration, such as source and target topics, filtering options, and keypoint extraction settings.
-- **`publisher_config.yaml`**: Defines parameters for publishing the processed point clouds.
-
-### Pre-requisites
-
-For effective point cloud registration, a physical calibration target is required. The target should have the following specifications:
-
-- **Top Section**: A circular disk with a diameter of 30 cm.
-- **Bottom Section**: A frustum-shaped lava cone with a height of 84 cm, a top radius of 17 cm, and a bottom radius of 7 cm.
-- **Reflective Film**: The reflective film should be applied only to the circular top section and the frustum-shaped bottom section.
