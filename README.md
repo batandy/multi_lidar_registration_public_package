@@ -35,7 +35,7 @@ This project is a ROS2-Humble-based application for processing and registering L
 ### Pre-requisites
 
 <p align = "center">
-<img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/calibration_target.jpg" alt="aligned four lidars">
+<img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/calibration_target.jpg" alt="aligned four lidars" height="470">
 </p> 
 
 For effective point cloud registration, a physical calibration target is required. The target should have the following specifications:
