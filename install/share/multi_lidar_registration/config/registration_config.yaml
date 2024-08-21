@@ -1,0 +1,11 @@
+point_cloud_registration_node:
+  #mid360 -> mid_callback
+  #avia -> avia_callback
+  #velodyne -> vlp_callback
+
+  ros__parameters:
+    source_topic: "LITE_points"
+    source_callback: "vlp_callback"
+    target_topic: "mid_points_0"
+    target_callback: "mid_callback"
+    opposite: false

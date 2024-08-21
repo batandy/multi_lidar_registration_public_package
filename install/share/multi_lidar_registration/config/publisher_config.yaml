@@ -1,0 +1,7 @@
+registration_publisher_node:
+  ros__parameters:
+    overlap_filtering: false
+    use_GICP_: false
+    publish_merged_topic: false
+    calculate_RT: true
+

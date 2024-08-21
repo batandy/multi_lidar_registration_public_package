@@ -1,0 +1,8 @@
+source;share/multi_lidar_registration/hook/cmake_prefix_path.ps1
+source;share/multi_lidar_registration/hook/cmake_prefix_path.dsv
+source;share/multi_lidar_registration/hook/cmake_prefix_path.sh
+source;share/multi_lidar_registration/local_setup.bash
+source;share/multi_lidar_registration/local_setup.dsv
+source;share/multi_lidar_registration/local_setup.ps1
+source;share/multi_lidar_registration/local_setup.sh
+source;share/multi_lidar_registration/local_setup.zsh

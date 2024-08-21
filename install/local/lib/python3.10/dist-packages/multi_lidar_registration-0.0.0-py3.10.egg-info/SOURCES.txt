@@ -1,0 +1,7 @@
+setup.py
+multi_lidar_registration/__init__.py
+multi_lidar_registration/module_to_import.py
+multi_lidar_registration.egg-info/PKG-INFO
+multi_lidar_registration.egg-info/SOURCES.txt
+multi_lidar_registration.egg-info/dependency_links.txt
+multi_lidar_registration.egg-info/top_level.txt
