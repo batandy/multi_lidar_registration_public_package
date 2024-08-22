@@ -97,7 +97,7 @@ This process involves several key steps:
    - The extracted keypoints are crucial for aligning or registering point clouds from different sensors or different positions of the same sensor.
 
     <p align = "center">
-    <img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/keypoint_ex.png" alt="aligned four lidars" height="470">
+    <img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/keypoint_ex.png" alt="keypoint_ex" height="470">
     </p> 
    *This is an example of the keypoint extraction process.*
 
@@ -159,7 +159,9 @@ This command initiates the registration process using the extracted keypoints an
 
 The `overlap_filtering_controller.cpp` file is responsible for performing overlap filtering on LiDAR point clouds. This process allows users to adjust and apply filtering to specific overlapping regions in real-time.
 
-![Overlap Filtering Example](path/to/your/image.png)
+<p align = "center">
+<img src= "https://github.com/batandy/multi_lidar_registration_public_package/blob/main/docs/overlap_filtering.png" alt="overlap_filtering" height="470">
+</p> 
 *This is an example of the overlap filtering process.*
 
 To filter overlapping regions, start the overlap filtering process by running the following command:
