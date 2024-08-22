@@ -157,6 +157,8 @@ This command initiates the registration process using the extracted keypoints an
 5. **Binary File Recording**:
    - If `start_bin_recording` is enabled, the system records the binary data of the processed point clouds for later analysis or debugging.
 
+---
+
 ### Overlap-Filtering
 
 The `overlap_filtering_controller.cpp` file is responsible for performing overlap filtering on LiDAR point clouds. This process allows users to adjust and apply filtering to specific overlapping regions in real-time.
