@@ -10,11 +10,8 @@ This project is a ROS2-Humble-based application for processing and registering L
 
 ## Table of Contents
 - [Installation](#installation)
-- [Usage](#usage)
 - [Pre-requisites](#pre-requisites)
-- [Configuration](#configuration)
-- [Registration](#Registration)
-- [Overlap Filtering](#Overlap-Filtering)
+- [Usage](#usage)
 
 ## Installation
 ### Prerequisites
@@ -157,8 +154,7 @@ This command initiates the registration process using the extracted keypoints an
 5. **Binary File Recording**:
    - If `start_bin_recording` is enabled, the system records the binary data of the processed point clouds for later analysis or debugging.
 
-<hr style="border: 1px solid #ccc;" />
-
+#
 ### Overlap-Filtering
 
 The `overlap_filtering_controller.cpp` file is responsible for performing overlap filtering on LiDAR point clouds. This process allows users to adjust and apply filtering to specific overlapping regions in real-time.
