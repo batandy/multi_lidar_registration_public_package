@@ -157,7 +157,7 @@ This command initiates the registration process using the extracted keypoints an
 5. **Binary File Recording**:
    - If `start_bin_recording` is enabled, the system records the binary data of the processed point clouds for later analysis or debugging.
 
----
+<hr style="border: 1px solid #ccc;" />
 
 ### Overlap-Filtering
 
